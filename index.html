@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Get Key</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <script>
+        linkvertise = function (user_id, options) {
+            document.addEventListener('DOMContentLoaded', function () {
+                convert(user_id, options);
+            }, false);
+        };
+        var convert = function (user_id, options) {
+            var elements = document.querySelectorAll("a[href]");
+            debug("Scanning " + elements.length + " elements");
+            for (var i = 0;
+                i < elements.length;
+                i++) {
+                var link = elements[i];
+                var base_href = markup(link.href);
+                if (base_href.match(new RegExp("^https?://")) == null)
+                    continue;
+                if (options) {
+                    if (options.blacklist) {
+                        var abort = false;
+                        for (var k = 0;
+                            k < options.blacklist.length;
+                            k++) {
+                            if (options.blacklist[k] == "") continue;
+                            if (str_is(options.blacklist[k], base_href))
+                                abort = true;
+
+                        }
+                        if (abort)
+                            continue;
+
+                    }
+                    if (options.whitelist && options.whitelist.length != 0) {
+                        var abort = true;
+                        for (var k = 0;
+                            k < options.whitelist.length;
+                            k++) {
+                            if (str_is(options.whitelist[k], base_href))
+                                abort = false;
+
+                        }
+                        if (abort)
+                            continue;
+
+                    }
+                }
+                debug("Converting '" + base_href + "'");
+                var base_url = "https://direct-link.net/" + user_id + "/" + Math.random() * 1000 + "/dynamic/";
+                var href = base_url + "?r=" + btoa(encodeURI(base_href));
+                link.href = href;
+                link.setAttribute("_target", "blank");
+                document.getElementById("demo").innerHTML = link.href
+            }
+        };
+        var debug = function (message) {
+            return;
+            console.log("[Linkvertise API] " + message);
+        };
+        var markup = function (href) {
+            var link = document.createElement("a");
+            link.href = href;
+            var c = link.href;
+            if (c.substring(c.length - 1) == "/")
+                c = c.substring(0, c.length - 1);
+            return c;
+
+        };
+        var checkDomain = function (url) {
+            if (url.indexOf('//') === 0) {
+                url = location.protocol + url;
+            }
+            return url.toLowerCase().replace(/([a-z])?:\/\//, '$1').split('/')[0];
+
+        };
+        var isExternal = function (url) {
+            return ((url.indexOf(':') > -1 || url.indexOf('//') > -1) && checkDomain(location.href) !== checkDomain(url));
+        };
+        var str_is = function (pattern, value) {
+            if (pattern.indexOf("*") == -1)
+                pattern = "*" + pattern + "*";
+            if (pattern == value) {
+                return true;
+            }
+            pattern = preg_quote(pattern, '#');
+            pattern = pattern.replace(/\\\*/g, function (x) {
+                return "\.*";
+            });
+            pattern = new RegExp('^' + pattern + '$');
+            var res = value.match(pattern);
+            return res !== null;
+
+        };
+        function preg_quote(str, delimiter) { return (str + '').replace(new RegExp('[.\\\\+*?\\[\\^\\]$(){}=!<>|:\\' + (delimiter || '') + '-]', 'g'), '\\$&') }
+    </script>
+    <script>linkvertise(225132, { whitelist: [], blacklist: [""] });</script>
+</head>
+
+<body style="background-color: rgb(255, 255, 255);">
+    <a id="demo" href="https://raw.githubusercontent.com/thedragonslayer2/thedragonslayer2.github.io/main/test"
+        style="color: rgb(0, 0, 0);">PLS RELOAD!</a>
+    <script>
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("GET", "https://raw.githubusercontent.com/thedragonslayer2/thedragonslayer2.github.io/main/test", false); // false for synchronous request
+        xmlHttp.send(null);
+        document.getElementById("demo").href = xmlHttp.responseText
+        document.getElementById("demo").innerHTML = xmlHttp.responseText;
+    </script>
+</body>
+
+</html>
