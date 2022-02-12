@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Get Key</title>
+</head>
+
+<body>
+    <h1 id="path"></h1>
+
+    <script>
+        const path = window.location.href.split("/")
+        const Text = path[path.length - 1].split('?')
+        document.getElementById('path').innerHTML = Text[Text.length - 1]
+    </script>
+</body>
+
+</html>
