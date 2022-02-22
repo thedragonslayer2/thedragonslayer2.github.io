@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Redirecting</title>
+</head>
+
+<body>
+
+    <h2>Redirecting</h2>
+
+    <script>
+
+        const path = window.location.href.split("/")
+        const Text = path[path.length - 1].split('?==')
+        location.replace("https://direct-link.net/225132/49.623651598785/dynamic/?r=" + Text[Text.length - 1])
+    </script>
+
+</body>
+
+</html>
