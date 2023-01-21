@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Key Checkpoint</title>
+</head>
+
+<body>
+    <h1 id="path"></h1>
+
+    <script>
+        window.$_GET = new URLSearchParams(location.search);
+        setTimeout(function () {
+            window.location.href = atob($_GET.get('Key'))
+        }, 3000)
+        document.getElementById('path').innerHTML = "Checkpoint Completed, Please Wait 3 Seconds."
+    </script>
+</body>
+
+
+</html>
