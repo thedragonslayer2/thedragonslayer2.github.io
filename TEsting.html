@@ -10,9 +10,8 @@
 
     <script>
         if (document.referrer == "https://linkvertise.com/") {
-        window.$_GET = new URLSearchParams(location.search);
-        var value1 = $_GET.get('Key');
-        document.getElementById('path').innerHTML = value1
+            window.$_GET = new URLSearchParams(location.search);
+            document.getElementById('path').innerHTML = $_GET.get('Key')
         } else {
             document.getElementById('path').innerHTML = "test"
         }
