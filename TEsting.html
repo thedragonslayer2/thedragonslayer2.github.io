@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Get Key</title>
+</head>
+
+<body>
+    <h1 id="path"></h1>
+
+    <script>
+        if (document.referrer == "https://linkvertise.com/") {
+        window.$_GET = new URLSearchParams(location.search);
+        var value1 = $_GET.get('Key');
+        document.getElementById('path').innerHTML = value1
+        } else {
+            document.getElementById('path').innerHTML = "test"
+        }
+    </script>
+</body>
+
+
+</html>
