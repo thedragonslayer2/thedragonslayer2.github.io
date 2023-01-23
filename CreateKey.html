@@ -1,1 +1,23 @@
+<!DOCTYPE html>
+<html>
 
+<head>
+</head>
+
+<body>
+
+    <a href="#" id="abc">.</a>
+
+
+    <script src="https://publisher.linkvertise.com/cdn/linkvertise.js"></script>
+    <script>
+        window.$_GET = new URLSearchParams(location.search);
+        var Id = $_GET.get('Id')
+        var Url = $_GET.get('Url')
+        linkvertise(Id, { whitelist: [], blacklist: [""] });
+        document.getElementById("abc").href = Url
+        document.getElementById("abc").innerText = Url
+    </script>
+</body>
+
+</html>
