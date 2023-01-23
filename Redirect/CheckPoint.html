@@ -10,10 +10,11 @@
 
     <script>
         window.$_GET = new URLSearchParams(location.search);
+        var Count = $_GET.get('Count')
         setTimeout(function () {
             window.location.href = atob($_GET.get('Url'))
         }, 3000)
-        document.getElementById('path').innerHTML = "Checkpoint Completed, Please Wait 3 Seconds."
+        document.getElementById('path').innerHTML = "Checkpoint " + Count + " Completed, Please Wait 3 Seconds."
     </script>
 </body>
 
