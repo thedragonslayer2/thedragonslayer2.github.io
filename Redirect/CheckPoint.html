@@ -11,7 +11,7 @@
     <script>
         window.$_GET = new URLSearchParams(location.search);
         setTimeout(function () {
-            window.location.href = atob($_GET.get('Key'))
+            window.location.href = atob($_GET.get('Url'))
         }, 3000)
         document.getElementById('path').innerHTML = "Checkpoint Completed, Please Wait 3 Seconds."
     </script>
