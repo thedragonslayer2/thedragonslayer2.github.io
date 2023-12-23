@@ -2,16 +2,16 @@
 <html>
 
 <head>
-    <title>Check Point</title>
-    <script>
-        function redirect() {
-            window.$_GET = new URLSearchParams(location.search);
-            var Key = $_GET.get('Key'), Count = $_GET.get('Count');
-            if ((document.referrer.includes("://linkvertise.com") || document.referrer.includes("://v.gd")) && Key) {
-                window.location.href = "https://thedragonslayer2.github.io/Redirect/CheckPoint.html?Url=" + Key + ((Count && ("&Count=" + Count)) || "");
-            } else { window.location.href = "https://bit.ly/3oHhFPC"; }
-        }
-    </script>
+	<title>Check Point</title>
+	<script>
+		function redirect() {
+			window.$_GET = new URLSearchParams(location.search);
+			var Key = $_GET.get('Key'), Count = $_GET.get('Count');
+			if ((document.referrer.includes("://linkvertise.com") || document.referrer.includes("://v.gd")) && Key) {
+				window.location.href = "https://thedragonslayer2.github.io/Redirect/CheckPoint.html?Url=" + Key + ((Count && ("&Count=" + Count)) || "");
+			} else { window.location.href = "https://thedragonslayer2.github.io/Redirect/CheckUrl.html?" + (document.referrer || "Please-Wait..."); }
+		}
+	</script>
 </head>
 
 <body onload="redirect()">
