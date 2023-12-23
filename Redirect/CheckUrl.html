@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Wait</title>
+</head>
+
+<body>
+	<h1 id="path"></h1>
+
+	<script>
+		const path = window.location.href.split("/")
+		const Text = path[path.length - 1].split('?')
+		document.getElementById('path').innerHTML = Text[Text.length - 1]
+		setTimeout(function () {
+			window.location.href = 'https://bit.ly/3oHhFPC';
+		}, 5000);
+	</script>
+</body>
+
+</html>
