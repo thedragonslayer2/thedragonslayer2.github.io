@@ -7,9 +7,9 @@
         function redirect() {
             window.$_GET = new URLSearchParams(location.search);
             var Key = $_GET.get('Key'), Count = $_GET.get('Count');
-            if ((document.referrer.includes("://linkvertise.com") || document.referrer.includes("://v.gd")) && Key) {
+            // if ((document.referrer.includes("://linkvertise.com") || document.referrer.includes("://v.gd")) && Key) {
                 window.location.href = "https://thedragonslayer2.github.io/Redirect/CheckPoint.html?Url=" + Key + ((Count && ("&Count=" + Count)) || "");
-            } else { window.location.href = "https://bit.ly/3oHhFPC"; }
+            // } else { window.location.href = "https://bit.ly/3oHhFPC"; }
         }
     </script>
 </head>
