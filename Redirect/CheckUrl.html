@@ -2,20 +2,19 @@
 <html>
 
 <head>
-	<title>Checking Url</title>
+    <title>Checking Url</title>
 </head>
 
 <body>
-	<h1 id="path"></h1>
+    <h1 id="path"></h1>
 
-	<script>
-		const path = window.location.href.split("/")
-		const Text = path[path.length - 1].split('?')
-		document.getElementById('path').innerHTML = Text[Text.length - 1].replace(/-/g, ' ');
-		setTimeout(function () {
-			window.location.href = 'https://bit.ly/3oHhFPC';
-		}, 5000);
-	</script>
+    <script>
+        window.$_GET = new URLSearchParams(location.search);
+        document.getElementById('path').innerHTML = $_GET.get('Text').replace(/-/g, ' ');
+        setTimeout(function () {
+            window.location.href = $_GET.get('RedirectTo');
+        }, 5000);
+    </script>
 </body>
 
 </html>
