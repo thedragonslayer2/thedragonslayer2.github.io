@@ -4,12 +4,15 @@
 <head>
 	<title>Check Point</title>
 	<script>
-		function redirect() {
+		const getShortenedUrl = async (link) => { return await (await fetch("https://tinyurl.com/api-create.php?url=" + encodeURIComponent(link))).text(); };
+		async function redirect() {
 			window.$_GET = new URLSearchParams(location.search);
 			var Key = $_GET.get('Key'), Count = $_GET.get('Count');
 			if ((document.referrer.includes("://linkvertise.com") || document.referrer.includes("://v.gd")) && Key) {
 				window.location.href = "https://thedragonslayer2.github.io/Redirect/CheckPoint.html?Url=" + Key + ((Count && ("&Count=" + Count)) || "");
-			} else { window.location.href = "https://thedragonslayer2.github.io/Redirect/CheckUrl.html?" + (document.referrer || "Use-A-Different-Browser"); }
+			} else {
+				window.location.href = "https://thedragonslayer2.github.io/Redirect/CheckUrl.html?Text=" + (document.referrer || "Use-A-Different-Browser") + "&RedirectTo=" + (await getShortenedUrl("https://linkvertise.com/591410/" + Math.random() * 1e3 + "/dynamic/?r=" + btoa(await getShortenedUrl(window.location.href))));
+			}
 		}
 	</script>
 </head>
