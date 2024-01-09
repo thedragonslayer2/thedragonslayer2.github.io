@@ -2,14 +2,37 @@
 <html>
 
 <head>
-    <title>test</title>
+  <title>Check Site Reachability</title>
 </head>
 
 <body>
-    <h1 id="path"></h1>
+  <p id="result">Checking site reachability...</p>
 
-    <script>
-        document.getElementById('path').innerHTML = document.referrer || "No link"
-        //https://thedragonslayer2.github.io/CreateKey.html?Id=591410?Url=https://thedragonslayer2.github.io/YES!/test.html
-    </script>
+  <script>
+    function checkSiteAvailability() {
+      const siteUrl = 'http://www.example.com'; // Replace with the URL you want to check
+      const xhr = new XMLHttpRequest();
+      const resultParagraph = document.getElementById('result');
+
+      xhr.onload = function () {
+        if (xhr.status >= 200 && xhr.status < 300) {
+          resultParagraph.textContent = `Site ${siteUrl} is reachable.`;
+        } else {
+          resultParagraph.textContent = `Failed to reach site ${siteUrl}. Status code: ${xhr.status}`;
+        }
+      };
+
+      xhr.onerror = function () {
+        resultParagraph.textContent = `Error checking site ${siteUrl}.`;
+      };
+
+      xhr.open('GET', siteUrl, true);
+      xhr.send();
+    }
+
+    // Example usage:
+    checkSiteAvailability();
+  </script>
 </body>
+
+</html>
