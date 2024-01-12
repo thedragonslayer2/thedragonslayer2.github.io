@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Check Site Reachability</title>
+</head>
+
+<body>
+  <script>
+    window.$_GET = new URLSearchParams(location.search);
+    var xhr = new XMLHttpRequest(), resultParagraph = document.getElementById('result');
+    var WhitelistPage = `http://mrjack.x10.mx/Whitelist.php?Identification=${$_GET.get('Identification')}&EncodedMsg=${$_GET.get('EncodedMsg')}`;
+
+    xhr.onload = function () {
+      if (xhr.status >= 200 && xhr.status < 300) {
+        window.location.href = WhitelistPage;
+      } else {
+        window.location.href = $_GET.get('KeyLink');
+      }
+    };
+    xhr.onerror = function () {
+      window.location.href = $_GET.get('KeyLink');
+    };
+    xhr.open('GET', WhitelistPage, true);
+    xhr.send();
+  </script>
+</body>
+
+</html>
