@@ -1,25 +1,20 @@
 <!DOCTYPE html>
 <html>
 
+<head>
+  <title>Check Site Reachability</title>
+</head>
+
 <body>
-
-    <h1>JavaScript Global Methods</h1>
-
-    <p id="demo"></p>
-
-    <script>
-        setTimeout(async function () {
-            const url = 'https://mrjack.x10.mx';
-
-            const response = await fetch(url);
-
-            const text = await response.text();
-
-            console.log(text);
-        }, 1000);
-
-    </script>
-
+  <script>
+    window.$_GET = new URLSearchParams(location.search);
+    var WhitelistPage = `http://mrjack.x10.mx/Whitelist.php?Identification=${$_GET.get('Identification')}&EncodedMsg=${$_GET.get('EncodedMsg')}`;
+    fetch('https://mrjack.x10.mx', { mode: 'no-cors' }).then(r => {
+      window.location.href = WhitelistPage;
+    }).catch(e => {
+      window.location.href = $_GET.get('KeyLink');
+    });
+  </script>
 </body>
 
 </html>
