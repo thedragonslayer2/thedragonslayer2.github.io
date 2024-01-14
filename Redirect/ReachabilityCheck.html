@@ -8,7 +8,7 @@
 <body>
   <script>
     window.$_GET = new URLSearchParams(location.search);
-    var WhitelistPage = `http://mrjack.x10.mx/Whitelist.php?Identification=${$_GET.get('Identification')}&EncodedMsg=${$_GET.get('EncodedMsg')}`;
+    var WhitelistPage = `http://www.mrjack.x10.mx/Whitelist.php?Identification=${$_GET.get('Identification')}&EncodedMsg=${$_GET.get('EncodedMsg')}`;
     fetch('https://mrjack.x10.mx', { mode: 'no-cors' }).then(r => {
       window.location.href = WhitelistPage;
     }).catch(e => {
