@@ -1,38 +1,25 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <title>Check Site Reachability</title>
-</head>
-
 <body>
-  <p id="result">Checking site reachability...</p>
 
-  <script>
-    function checkSiteAvailability() {
-      const siteUrl = 'http://mrjack.x10.mx'; // Replace with the URL you want to check
-      const xhr = new XMLHttpRequest();
-      const resultParagraph = document.getElementById('result');
+    <h1>JavaScript Global Methods</h1>
 
-      xhr.onload = function () {
-        if (xhr.status >= 200 && xhr.status < 300) {
-          resultParagraph.textContent = `Site ${siteUrl} is reachable.`;
-        } else {
-          resultParagraph.textContent = `Failed to reach site ${siteUrl}. Status code: ${xhr.status}`;
-        }
-      };
+    <p id="demo"></p>
 
-      xhr.onerror = function () {
-        resultParagraph.textContent = `Error checking site ${siteUrl}.`;
-      };
+    <script>
+        setTimeout(async function () {
+            const url = 'https://mrjack.x10.mx';
 
-      xhr.open('GET', siteUrl, true);
-      xhr.send();
-    }
+            const response = await fetch(url);
 
-    // Example usage:
-    checkSiteAvailability();
-  </script>
+            const text = await response.text();
+
+            console.log(text);
+        }, 1000);
+
+    </script>
+
 </body>
 
 </html>
