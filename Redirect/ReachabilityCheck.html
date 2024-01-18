@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
     <title>Check Site Reachability</title>
 </head>
 
@@ -14,8 +13,7 @@
             var WhitelistPage = `https://mrjack.x10.mx/Whitelist.php?Identification=${$_GET.get('Identification')}&EncodedMsg=${$_GET.get('EncodedMsg')}`;
 
             function redirectToWhitelistPage() {
-                window.location.href = WhitelistPage;
-
+                window.open(WhitelistPage, "_blank");
             }
 
             function DnsFixInstructions() {
@@ -25,7 +23,7 @@
             // Check site reachability
             fetch('https://mrjack.x10.mx', { mode: 'no-cors' })
                 .then(response => {
-                    redirectToWhitelistPage()
+                    window.location.href = WhitelistPage;
                 })
                 .catch(error => {
                     document.body.innerHTML = `
