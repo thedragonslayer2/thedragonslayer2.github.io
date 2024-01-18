@@ -24,8 +24,7 @@
             function checkSiteReachability() {
                 fetch('https://mrjack.x10.mx', { mode: 'no-cors' })
                     .then(response => {
-                        window.open(WhitelistPage, "_blank");
-                        //window.location.href = WhitelistPage;
+                        window.location.href = WhitelistPage;
                     })
                     .catch(error => {
                         document.body.innerHTML = `
