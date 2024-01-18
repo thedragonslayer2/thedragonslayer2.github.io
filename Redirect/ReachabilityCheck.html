@@ -28,10 +28,10 @@
                     })
                     .catch(error => {
                         document.body.innerHTML = `
-                            <button onclick="redirectToWhitelistPage()">Redirect to Key Link</button>
                             <p>If you encounter 'DNS_PROBE_FINISHED_NXDOMAIN', click the following button for guidance:
                                 <button onclick="DnsFixInstructions()">DNS Issue Fix</button>
                             </p>
+                            <button onclick="redirectToWhitelistPage()">Redirect to Key Link</button>
                         `;
                     });
             }
