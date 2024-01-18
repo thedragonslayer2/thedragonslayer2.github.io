@@ -1,20 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <title>Check Site Reachability</title>
+    <meta charset="UTF-8">
+    <title>Check Site Reachability</title>
 </head>
 
 <body>
-  <script>
-    window.$_GET = new URLSearchParams(location.search);
-    var WhitelistPage = `https://mrjack.x10.mx/Whitelist.php?Identification=${$_GET.get('Identification')}&EncodedMsg=${$_GET.get('EncodedMsg')}`;
-    fetch('https://mrjack.x10.mx', { mode: 'no-cors' }).then(r => {
-      window.location.href = WhitelistPage;
-    }).catch(e => {
-      window.location.href = $_GET.get('KeyLink');
-    });
-  </script>
+    <div class="container">
+        <h1>Site Reachability Check</h1>
+        <script>
+            window.$_GET = new URLSearchParams(location.search);
+            var WhitelistPage = `https://mrjack.x10.mx/Whitelist.php?Identification=${$_GET.get('Identification')}&EncodedMsg=${$_GET.get('EncodedMsg')}`;
+
+            function redirectToWhitelistPage() {
+                window.open(WhitelistPage, "_blank");
+            }
+
+            function DnsFixInstructions() {
+                window.open("https://www.youtube.com/results?search_query=dns_probe_finished_nxdomain", "_blank");
+            }
+
+            // Check site reachability
+            fetch('https://mrjack.x10.mx', { mode: 'no-cors' })
+                .then(response => {
+                    redirectToWhitelistPage()
+                })
+                .catch(error => {
+                    document.body.innerHTML = `
+                        <button onclick="redirectToWhitelistPage()">Redirect to Key Link</button>
+                        <p>If you encounter 'DNS_PROBE_FINISHED_NXDOMAIN', click the following button for guidance:
+                            <button onclick="DnsFixInstructions()">DNS Issue Fix</button>
+                        </p>
+                    `;
+                });
+        </script>
+    </div>
 </body>
 
 </html>
