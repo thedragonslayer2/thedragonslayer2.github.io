@@ -14,7 +14,8 @@
             var WhitelistPage = `https://mrjack.x10.mx/Whitelist.php?Identification=${$_GET.get('Identification')}&EncodedMsg=${$_GET.get('EncodedMsg')}`;
 
             function redirectToWhitelistPage() {
-                window.open(WhitelistPage, "_blank");
+                window.location.href = WhitelistPage;
+
             }
 
             function DnsFixInstructions() {
