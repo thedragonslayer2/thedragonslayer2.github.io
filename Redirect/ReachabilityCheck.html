@@ -22,6 +22,7 @@
             }
 
             function checkSiteReachability() {
+                document.body.innerHTML = `Please wait...`;
                 fetch('https://mrjack.x10.mx', { mode: 'no-cors' })
                     .then(response => {
                         window.location.href = WhitelistPage;
