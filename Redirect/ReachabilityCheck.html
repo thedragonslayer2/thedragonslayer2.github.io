@@ -33,8 +33,7 @@
                             })
                             .catch(error => {
                                 document.body.innerHTML = `<p>If you encounter 'DNS_PROBE_FINISHED_NXDOMAIN', click the following button for guidance:<button onclick="DnsFixInstructions()">DNS Issue Fix</button></p>
-                            <button onclick="redirectToWhitelistPage()">Redirect to Key Link</button>
-                        `;
+                            <button onclick="redirectToWhitelistPage()">Redirect to Key Link</button>`;
                             });
                     } else {
                         document.body.innerHTML = `<h1>Please get a new Key link by executing the script...</h1>`;
