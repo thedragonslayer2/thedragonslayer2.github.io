@@ -23,18 +23,22 @@
 
             function checkSiteReachability() {
                 document.body.innerHTML = `Please wait...`;
-                fetch('https://mrjack.x10.mx', { mode: 'no-cors' })
-                    .then(response => {
-                        window.location.href = WhitelistPage;
-                    })
-                    .catch(error => {
-                        document.body.innerHTML = `
+                if ($_GET.get('Identification') && $_GET.get('EncodedMsg')) {
+                    fetch('https://mrjack.x10.mx', { mode: 'no-cors' })
+                        .then(response => {
+                            window.location.href = WhitelistPage;
+                        })
+                        .catch(error => {
+                            document.body.innerHTML = `
                             <p>If you encounter 'DNS_PROBE_FINISHED_NXDOMAIN', click the following button for guidance:
                                 <button onclick="DnsFixInstructions()">DNS Issue Fix</button>
                             </p>
                             <button onclick="redirectToWhitelistPage()">Redirect to Key Link</button>
                         `;
-                    });
+                        });
+                } else {
+                    document.body.innerHTML = `<h1>Please get a new Key by executing the script...</h1>`;
+                }
             }
         </script>
     </div>
