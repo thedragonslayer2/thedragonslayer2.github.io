@@ -24,7 +24,9 @@
             function checkSiteReachability() {
                 document.body.innerHTML = `Please wait...`;
                 if ($_GET.get('ExpireAt') && ($_GET.get('ExpireAt') < (Math.floor(new Date().getTime() / 1000)))) {
-                    document.body.innerHTML = `<h1>Key link Expired, Please get a new Key link by executing the script...</h1>`;
+                    document.body.innerHTML = `<h1>Key link Expired, Please get a new Key link by executing the script...</h1>
+                    <p>Current Time: ${Math.floor(new Date().getTime() / 1000)}</p>
+                    <p>Expiration Time: ${$_GET.get('ExpireAt')}</p>`;
                 } else {
                     if ($_GET.get('Identification') && $_GET.get('EncodedMsg')) {
                         fetch('https://mrjack.x10.mx', { mode: 'no-cors' })
