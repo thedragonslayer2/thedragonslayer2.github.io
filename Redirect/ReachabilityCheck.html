@@ -25,7 +25,7 @@
                 document.body.innerHTML = `Please wait...`;
                 if ($_GET.get('ExpireAt') && ($_GET.get('ExpireAt') < (Math.floor(new Date().getTime() / 1000)))) {
                     document.body.innerHTML = `<h1>Key link Expired, Please get a new Key link by executing the script...</h1>
-                    <button onclick="redirectToWhitelistPage()">Might be invalid, Go to link regardless?</button>
+                    <button onclick="redirectToWhitelistPage()">Key might be Invalid, Go to link regardless?</button>
                     <p>Current Time: ${Math.floor(new Date().getTime() / 1000)}</p>
                     <p>Expiration Time: ${$_GET.get('ExpireAt')}</p>`;
                 } else {
