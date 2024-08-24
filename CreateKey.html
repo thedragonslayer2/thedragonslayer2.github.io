@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <script data-cfasync="false" src="//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1085063"></script>
@@ -8,13 +8,11 @@
 <body>
 
     <a href="#" id="abc">.</a>
-
-
-    <script src="https://publisher.linkvertise.com/cdn/linkvertise.js"></script>
     <script>
         window.$_GET = new URLSearchParams(location.search);
         var Url = $_GET.get('Url')
         document.getElementById("abc").href = Url
+        document.getElementById("abc").innerText = Url
     </script>
 </body>
 
