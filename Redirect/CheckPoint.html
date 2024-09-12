@@ -73,7 +73,7 @@
         window.$_GET = new URLSearchParams(location.search);
         const Count = $_GET.get('Count');
         if ($_GET.get('Data')) {
-            const dataReveice = JSON.parse($_GET.get('Data'));
+            const dataReveice = JSON.parse(atob($_GET.get('Data')));
             const heading = document.createElement('div');
             heading.className = 'heading';
             if (Count == 4) {
