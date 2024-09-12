@@ -119,6 +119,7 @@
             path.innerHTML = "Checkpoint " + Count + " Completed, Please Wait 3 Seconds.";
         }
         setTimeout(() => {
+            console.log(selectedUrl);
             window.location.href = selectedUrl;
         }, 3000);
     </script>
