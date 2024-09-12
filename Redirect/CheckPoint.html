@@ -20,11 +20,8 @@
         .button-container {
             text-align: center;
             display: flex;
-            /* Make the container a flexbox */
             gap: 15px;
-            /* Add space between buttons */
             justify-content: center;
-            /* Center the buttons horizontally */
         }
 
         .button {
@@ -77,9 +74,9 @@
             const heading = document.createElement('div');
             heading.className = 'heading';
             if (Count == 4) {
-                heading.innerText = 'Continuing in 3 Seconds...';
+                heading.innerText = 'Continuing in 5 Seconds...';
             } else {
-                heading.innerText = "Checkpoint " + Count + " Completed, Continuing in 3 Seconds...";
+                heading.innerText = "Checkpoint " + Count + " Completed, Continuing in 5 Seconds...";
             }
             document.body.appendChild(heading);
 
@@ -116,12 +113,12 @@
             path.id = 'path';
             document.body.appendChild(path);
             selectedUrl = atob($_GET.get('Url'))
-            path.innerHTML = "Checkpoint " + Count + " Completed, Please Wait 3 Seconds.";
+            path.innerHTML = "Checkpoint " + Count + " Completed, Please Wait 5 Seconds.";
         }
         setTimeout(() => {
             console.log(selectedUrl);
             window.location.href = selectedUrl;
-        }, 3000);
+        }, 5000);
     </script>
 
 </body>
