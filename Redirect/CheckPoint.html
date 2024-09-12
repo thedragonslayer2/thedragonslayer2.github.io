@@ -1,22 +1,127 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Key Checkpoint</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f5;
+            font-family: Arial, sans-serif;
+        }
+
+        .button-container {
+            text-align: center;
+            display: flex;
+            /* Make the container a flexbox */
+            gap: 15px;
+            /* Add space between buttons */
+            justify-content: center;
+            /* Center the buttons horizontally */
+        }
+
+        .button {
+            display: inline-block;
+            width: 200px;
+            padding: 15px 30px;
+            margin: 15px auto;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        .button:active {
+            background-color: #003d7a;
+            transform: scale(0.95);
+        }
+
+        .button.selected {
+            background-color: #28a745;
+        }
+
+        .heading {
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
 </head>
 
 <body>
-    <h1 id="path"></h1>
 
     <script>
+        let selectedUrl
         window.$_GET = new URLSearchParams(location.search);
-        var Count = $_GET.get('Count')
-        setTimeout(function () {
-            window.location.href = atob($_GET.get('Url'))
-        }, 3000)
-        document.getElementById('path').innerHTML = "Checkpoint " + Count + " Completed, Please Wait 3 Seconds."
-    </script>
-</body>
+        const Count = $_GET.get('Count');
+        if ($_GET.get('Data')) {
+            const dataReveice = JSON.parse($_GET.get('Data'));
+            const heading = document.createElement('div');
+            heading.className = 'heading';
+            if (Count == 4) {
+                heading.innerText = 'Continuing in 3 Seconds...';
+            } else {
+                heading.innerText = "Checkpoint " + Count + " Completed, Continuing in 3 Seconds...";
+            }
+            document.body.appendChild(heading);
 
+            const buttonContainer = document.createElement('div');
+            buttonContainer.className = 'button-container';
+            document.body.appendChild(buttonContainer);
+
+            const button1 = document.createElement('button');
+            button1.id = 'button1';
+            button1.className = 'button selected';
+            button1.innerText = 'Linkvertise';
+            buttonContainer.appendChild(button1);
+
+            const button2 = document.createElement('button');
+            button2.id = 'button2';
+            button2.className = 'button';
+            button2.innerText = 'Loot Labs';
+            buttonContainer.appendChild(button2);
+
+            button1.addEventListener('click', () => {
+                selectedUrl = dataReveice.linkvertise;
+                button1.classList.add('selected');
+                button2.classList.remove('selected');
+            });
+
+            button2.addEventListener('click', () => {
+                selectedUrl = dataReveice.lootLabs;
+                button2.classList.add('selected');
+                button1.classList.remove('selected');
+            });
+        } else {
+            const path = document.createElement('div');
+            path.id = 'path';
+            document.body.appendChild(path);
+            selectedUrl = atob($_GET.get('Url'))
+            path.innerHTML = "Checkpoint " + Count + " Completed, Please Wait 3 Seconds.";
+        }
+        setTimeout(() => {
+            //window.location.href = selectedUrl;
+        }, 3000);
+    </script>
+
+</body>
 
 </html>
