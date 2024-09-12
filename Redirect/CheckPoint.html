@@ -98,6 +98,7 @@
             button2.className = 'button';
             button2.innerText = 'Loot Labs';
             buttonContainer.appendChild(button2);
+            selectedUrl = dataReveice.linkvertise;
 
             button1.addEventListener('click', () => {
                 selectedUrl = dataReveice.linkvertise;
@@ -118,7 +119,7 @@
             path.innerHTML = "Checkpoint " + Count + " Completed, Please Wait 3 Seconds.";
         }
         setTimeout(() => {
-            //window.location.href = selectedUrl;
+            window.location.href = selectedUrl;
         }, 3000);
     </script>
 
