@@ -62,7 +62,7 @@
         }
     </style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8574806886224789"
-     crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -70,15 +70,15 @@
     <script>
         let selectedUrl
         window.$_GET = new URLSearchParams(location.search);
-        const Count = $_GET.get('Count');
+        const Count = $_GET.get('Count'), redirectTime = 3000;
         if ($_GET.get('Data')) {
             const dataReveice = JSON.parse(atob($_GET.get('Data')));
             const heading = document.createElement('div');
             heading.className = 'heading';
             if (Count == 4) {
-                heading.innerText = 'Continuing in 5 Seconds...';
+                heading.innerText = 'Continuing in 3 Seconds...';
             } else {
-                heading.innerText = "Checkpoint " + Count + " Completed, Continuing in 5 Seconds...";
+                heading.innerText = "Checkpoint " + Count + " Completed, Continuing in 5 Seconds...", redirectTime = 5000;
             }
             document.body.appendChild(heading);
 
@@ -115,12 +115,12 @@
             path.id = 'path';
             document.body.appendChild(path);
             selectedUrl = atob($_GET.get('Url'))
-            path.innerHTML = "Checkpoint " + Count + " Completed, Please Wait 5 Seconds.";
+            path.innerHTML = "Checkpoint " + Count + " Completed, Please Wait 3 Seconds.";
         }
         setTimeout(() => {
             console.log(selectedUrl);
             window.location.href = selectedUrl;
-        }, 5000);
+        }, redirectTime);
     </script>
 
 </body>
