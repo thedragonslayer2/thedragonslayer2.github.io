@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -62,13 +63,13 @@
         }
     </style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8574806886224789"
-     crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
 
     <script>
-        let selectedUrl
+        let selectedUrl, redirectTime = 3000
         window.$_GET = new URLSearchParams(location.search);
         const Count = $_GET.get('Count');
         if ($_GET.get('Data')) {
@@ -98,6 +99,7 @@
             button2.innerText = 'Loot Labs';
             buttonContainer.appendChild(button2);
             selectedUrl = dataReveice.linkvertise;
+            redirectTime = 5000;
 
             button1.addEventListener('click', () => {
                 selectedUrl = dataReveice.linkvertise;
@@ -115,12 +117,12 @@
             path.id = 'path';
             document.body.appendChild(path);
             selectedUrl = atob($_GET.get('Url'))
-            path.innerHTML = "Checkpoint " + Count + " Completed, Please Wait 5 Seconds.";
+            path.innerHTML = "Checkpoint " + Count + " Completed, Please Wait 3 Seconds.";
         }
         setTimeout(() => {
             console.log(selectedUrl);
             window.location.href = selectedUrl;
-        }, 5000);
+        }, redirectTime);
     </script>
 
 </body>
