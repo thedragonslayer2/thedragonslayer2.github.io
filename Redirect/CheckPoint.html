@@ -76,9 +76,9 @@
             const heading = document.createElement('div');
             heading.className = 'heading';
             if (Count == 4) {
-                heading.innerText = 'Continuing in 3 Seconds...';
+                heading.innerText = 'Continuing in 5 Seconds...';
             } else {
-                heading.innerText = "Checkpoint " + Count + " Completed, Continuing in 5 Seconds...", redirectTime = 5000;
+                heading.innerText = "Checkpoint " + Count + " Completed, Continuing in 5 Seconds...";
             }
             document.body.appendChild(heading);
 
@@ -97,7 +97,7 @@
             button2.className = 'button';
             button2.innerText = 'Loot Labs';
             buttonContainer.appendChild(button2);
-            selectedUrl = dataReveice.linkvertise;
+            selectedUrl = dataReveice.linkvertise, redirectTime = 5000;
 
             button1.addEventListener('click', () => {
                 selectedUrl = dataReveice.linkvertise;
